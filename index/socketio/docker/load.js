@@ -13,6 +13,7 @@ module.exports = __ => {
       emit('networks', __.networks);
       emit('volumes', __.volumes);
       emit('composes', __.composes);
+      emit('environnements', __.environnements);
     })
     .catch((e) => {
       console.log(e);

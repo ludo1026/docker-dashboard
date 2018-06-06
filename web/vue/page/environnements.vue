@@ -141,20 +141,20 @@ h1 {
   background-color: white;
 }
 
-.flat-card .flat-card-content{
-  border: 1px solid #333333;
+.flat-card .flat-card-title {
+  border: 1px solid #bbc4d1;
   padding: 10px;
-  width: 200px;
 }
 
-.flat-card .flat-card-content h5 {
+.flat-card .flat-card-title h5 {
   font-size: 14px;
+  padding: 0;
 }
 
 .flat-card .flat-card-bottom {
-  border: 0 1px 1px 1px solid #333333;
+  border: 1px solid #bbc4d1;
+  border-top: 0;
   padding: 10px;
-  width: 200px;
 }
 
 </style>
