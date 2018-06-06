@@ -4,6 +4,7 @@ const loadImages = require('./load/images');
 const loadNetworks = require('./load/networks');
 const loadVolumes = require('./load/containers');
 const loadComposes = require('./load/composes');
+const defineGroups = require('./groups');
 const defineLinks = require('./links');
 
 module.exports = (__) => {
@@ -22,8 +23,17 @@ module.exports = (__) => {
       __.networks = results[i++];
       __.volumes = results[i++];
       __.composes = results[i++];
-      defineLinks(__);
+      try {
+        defineGroups(__);
+        defineLinks(__);
+      } catch(e) {
+        reject(e);
+      }
+      console.log(__.environnements);
       resolve(__);
-    });
+    })
+    .catch(e => {
+      reject(e);
+    })
   });
 }

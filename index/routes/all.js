@@ -10,7 +10,8 @@ module.exports = __ => {
           containers: __.containers,
           networks: __.networks,
           volumes: __.volumes,
-          composes: __.composes
+          composes: __.composes,
+          environnements: __.environnements
         });
       })
       .catch(e => {

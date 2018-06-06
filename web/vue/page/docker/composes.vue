@@ -58,7 +58,8 @@
                 <div class="col-xs-6"></div>
                 <div class="col-xs-3 cell">
                   <span
-                    v-for="port in container.Ports">
+                    v-for="port in container.Ports"
+                    v-bind:key="port.PrivatePort">
                     ({{port.Type}}) {{port.PrivatePort}} -> {{port.PublicPort}}
                     <br/>
                   </span>

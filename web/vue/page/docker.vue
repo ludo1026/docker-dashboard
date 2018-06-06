@@ -44,6 +44,15 @@
 
 <script>
 module.exports = {
+  props: [
+    'images',
+    'containers',
+    'networks',
+    'volumes',
+    'composes',
+    'logs',
+    'events'
+  ],
   components: {
     images: httpVueLoader('vue/page/docker/images.vue'),
     containers: httpVueLoader('vue/page/docker/containers.vue'),
@@ -59,100 +68,8 @@ module.exports = {
     return {
       errors: [],
       message: 'Hello Vue!',
-      images: [],
-      containers: [],
-      composes: [],
-      networks: [],
-      volumes: [],
       isConnected: false,
-      events: [],
-      logs: []
     }
-  },
-  created() {
-    axios.get(`all`)
-    .then(response => {
-      console.log(response.data);
-      this.images = response.data.images;
-      this.containers = response.data.containers;
-      this.networks = response.data.networks;
-      this.volums = response.data.volumes;
-      this.composes = response.data.composes;
-    })
-    .catch(e => {
-      this.errors.push(e);
-    });
-    /*
-    axios.get(`images`)
-    .then(response => {
-      console.log('images:',response.data);
-      this.images = response.data
-    })
-    .catch(e => {
-      this.errors.push(e);
-    });
-    axios.get(`containers`)
-    .then(response => {
-      console.log('containers:',response.data);
-      this.containers = response.data
-    })
-    .catch(e => {
-      this.errors.push(e);
-    });
-    axios.get(`composes`)
-    .then(response => {
-      console.log('composes:',response.data);
-      this.composes = response.data
-    })
-    .catch(e => {
-      this.errors.push(e);
-    });
-    axios.get(`networks`)
-    .then(response => {
-      console.log('networks:',response.data);
-      this.networks = response.data
-    })
-    .catch(e => {
-      this.errors.push(e);
-    });
-    axios.get(`volumes`)
-    .then(response => {
-      console.log('volumes:',response.data);
-      this.volumes = response.data
-    })
-    .catch(e => {
-      this.errors.push(e);
-    });
-    */
-    this.$socket = socket;
-    socket.on('connect', (data) => {
-      this.isConnected = true;
-    });
-    socket.on('disconnect', (data) => {
-      this.isConnected = false;
-    });
-    socket.on('images', (data) => {
-      this.images = data;
-    });
-    socket.on('containers', (data) => {
-      this.containers = data;
-    });
-    socket.on('composes', (data) => {
-      this.composes = data;
-    });
-    socket.on('networks', (data) => {
-      this.networks = data;
-    });
-    socket.on('volumes', (data) => {
-      this.volumes = data;
-    });
-    socket.on('docker', (data) => {
-      this.events.push(data);
-    });
-    socket.on('log', (data) => {
-      data = replaceTerminalCharacters(data);
-      this.logs.push(data);
-    });
   }
 }
 </script>

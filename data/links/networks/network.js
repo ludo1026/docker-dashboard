@@ -7,8 +7,6 @@ module.exports = __ => {
     if(container.NetworkSettings && container.NetworkSettings.Networks) {
       for(const networkName in container.NetworkSettings.Networks) {
         const networkContainer = container.NetworkSettings.Networks[networkName];
-        console.log(network.Id);
-        console.log(networkContainer.NetworkID);
         if(network.Id === networkContainer.NetworkID) {
           console.log(true)
           found = true;
