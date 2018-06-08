@@ -16,7 +16,7 @@ module.exports = __ => {
       emit('environnements', __.environnements);
     })
     .catch((e) => {
-      console.log(e);
+      console.error(e);
       emit('error', e);
     })
 }

@@ -3,7 +3,6 @@ module.exports = __ => {
   app.get('/images/:imageId/remove', function(req, res) {
     const imageId = req.params.imageId;
     emit('log', 'Remove image '+imageId);
-    console.log('remove:', imageId);
     const image = docker.getImage(imageId);
     image.remove((err, data) => {
       if(err) {

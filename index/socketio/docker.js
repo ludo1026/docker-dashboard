@@ -18,7 +18,7 @@ module.exports = (__) => {
 
   docker.getEvents({}, function (err, data) {
     if(err){
-      console.log(err.message);
+      console.error(err.message);
     } else {
       data.on('data', loadThrottled);
       /*

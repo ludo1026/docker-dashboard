@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="page-header">
-        <a class="btn"
-          v-on:click="view('environnements')">
-          Environnements
-        </a>
-        <a class="btn"
-          v-on:click="view('docker')">
-          Docker
-        </a>
+        <div class="container-page">
+          <a v-on:click="view('environnements')">
+            <span class="fa fa-server"></span> Environnements
+          </a>
+          <a v-on:click="view('docker')">
+            <span class="docker"></span> Docker
+          </a>
+        </div>
       </div>
       <docker
         v-if="page === 'docker'"
@@ -105,4 +105,37 @@ module.exports = {
 </script>
 
 <style>
+.page-header {
+  background-color: #4663a2;
+  padding: 10px;
+}
+.page-header a {
+  background-color: #4663a2;
+  color: white;
+  line-height: 26px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 16px;
+}
+.page-header .fa {
+  font-size: 16px;
+}
+.page-header a:hover {
+  background-color: #14305a;
+  color: white;
+}
+.page-header a.selected {
+  background-color: #14305a;
+  color: white;
+}
+.docker {
+  background: url('../../images/docker-white.svg') no-repeat left;
+  background-size: 22px;
+  background-position: 1px 0;
+  display: inline-block;
+  width: 23px;
+  height: 19px;
+  margin-top: 2px;
+}
 </style>

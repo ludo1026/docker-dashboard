@@ -3,7 +3,6 @@ module.exports = __ => {
   app.get('/containers/:containerId/start', function(req, res) {
     const containerId = req.params.containerId;
     emit('log', 'Start container '+containerId);
-    console.log('start:', containerId);
     const container = docker.getContainer(containerId);
     container.attach({stream: true, stdout: true, stderr: true}, function (err, stream) {
       container.modem.demuxStream(stream, {write: function (data) {
