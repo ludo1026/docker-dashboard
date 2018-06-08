@@ -29,7 +29,6 @@ module.exports = (__) => {
       } catch(e) {
         reject(e);
       }
-      console.log(__.environnements);
       resolve(__);
     })
     .catch(e => {
