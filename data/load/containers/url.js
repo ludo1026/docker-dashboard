@@ -3,7 +3,12 @@ module.exports = __ => {
 
   if(!container.Labels) return;
     
-  const text = container.Labels['traefik.backend'];
+  let text = container.Labels['traefik.backend'];
+
+  if(text) {
+    text = text.charAt(0).toUpperCase() + text.slice(1)
+  }
+
 
   const traefik_frontend_rule = container.Labels['traefik.frontend.rule'];
   
@@ -23,7 +28,7 @@ module.exports = __ => {
 
   container.url = {
     href,
-    text
+    text: text || href
   };
 
 }
