@@ -56,7 +56,7 @@
                     v-if="container.State === 'running' && container.url">
                     <ul>
                       <li>
-                        <a v-bind:href="container.url.href">
+                        <a v-bind:href="container.url.href" target="_blank">
                           {{container.url.text}}
                         </a>
                       </li>
