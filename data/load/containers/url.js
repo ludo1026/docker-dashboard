@@ -17,6 +17,8 @@ module.exports = __ => {
     href = traefik_frontend_rule.substring(17);
   }
 
+  if(!href) return;
+
   href = __.traefik_url + href;
 
   container.url = {
