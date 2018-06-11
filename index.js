@@ -21,9 +21,12 @@ if(process.env.DOCKER_COMPOSE_FILE) {
 let dockerComposeDir = path.dirname(dockerComposeFile);
 const dockerCompose = DockerCompose({cwd: dockerComposeDir});
 
+const traefik_url = process.env.TRAEFIK_URL || 'http://149.202.64.71';
+
 const __ = {
   app, io, ioClients, emit,
   docker, dockerCompose, dockerComposeDir, dockerComposeFile,
+  traefik_url, 
 }
 
 require('./index/socketio')(__);

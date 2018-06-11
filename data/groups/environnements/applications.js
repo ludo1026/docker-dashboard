@@ -16,13 +16,13 @@ module.exports = __ => {
     }
 
     // by appVersion
-    let containers_ForAppVersion_ForAppName = containers_ByAppVersions_ForAppName[appVersion];
-    if(!containers_ForAppVersion_ForAppName) {
-      containers_ForAppVersion_ForAppName = [];
-      containers_ByAppVersions_ForAppName[appName] = containers_ForAppVersion_ForAppName;
+    let containers_ForAppVersion = containers_ByAppVersions_ForAppName[appVersion];
+    if(!containers_ForAppVersion) {
+      containers_ForAppVersion = [];
+      containers_ByAppVersions_ForAppName[appVersion] = containers_ForAppVersion;
     }
 
-    containers_ForAppVersion_ForAppName.push(container);
+    containers_ForAppVersion.push(container);
   }
   
   const applications = [];

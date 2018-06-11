@@ -53,19 +53,32 @@
                   <div class="flat-card-bottom"
                     v-for="container in application.containers"
                     v-bind:key="container.Id"
+                    v-if="container.State === 'running' && container.url">
+                    <ul>
+                      <li>
+                        <a v-bind:href="container.url.href">
+                          {{container.url.text}}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="flat-card-bottom"
+                    v-for="container in application.containers"
+                    v-bind:key="container.Id"
                     v-bind:class="{ 
                       'running-container': container.State === 'running',
                       'exited-container': container.State === 'exited'
                     }">
-                    <span 
-                      v-if="container.State === 'running'"
-                      class="fa fa-check icon-font running-font">
+                    <span>
+                      <span class="fa icon-font"
+                        v-bind:class="{
+                          'fa-times exited-font': container.State === 'exited',
+                          'fa-check running-font': container.State === 'running'
+                        }"></span>
+                      <span class="cell-head">
+                        {{container.name}}
+                      </span>
                     </span>
-                    <span 
-                      v-if="container.State === 'exited'"
-                      class="fa fa-times icon-font exited-font">
-                    </span>
-                    <span v-for="name in container.Names" v-bind:key="name">{{name}}</span>
                   </div>
                 </div>
               </div>
@@ -227,6 +240,14 @@ module.exports = {
   border-top: 0;
   padding: 10px;
   font-size: 18px;
+}
+
+.flat-card li {
+  margin-left: 20px;
+}
+
+.flat-card a {
+  font-size: 16px;
 }
 
 .running-container {

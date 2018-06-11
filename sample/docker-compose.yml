@@ -12,6 +12,9 @@ services:
       - "8080:8080"
     labels:
       - "application.name=traefik"
+      - "application.version=1.0.0"
+      - "traefik.frontend.rule=PathPrefixStrip: /git"
+      - "traefik.backend=gitea"
     networks:
       - sample
 

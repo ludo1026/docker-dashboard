@@ -12,7 +12,7 @@
       <div class="row row-body"
         v-for="container in containers"
         v-bind:key="container.Id">
-        <div class="col-xs-3 cell cell-head"><span v-for="name in container.Names" v-bind:key="name">{{name}}</span></div>
+        <div class="col-xs-3 cell cell-head"><span>{{container.name}}</span></div>
         <div class="col-xs-2 cell">{{container.Id | truncate(13,'')}}</div>
         <div class="col-xs-2 cell">{{container.Image | truncate(25,'')}}</div>
         <div class="col-xs-2 cell">
