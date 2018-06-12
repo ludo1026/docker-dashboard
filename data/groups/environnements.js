@@ -16,17 +16,26 @@ module.exports = __ => {
   }
   
   const environnements = [];
+  let environnement_Bridge = null;
   for(const networkName in containers_ByNetworks) {
     const containers_ForNetwork = containers_ByNetworks[networkName];
     const applications = groupContainersByApplications({
       ...__,
       containers: containers_ForNetwork
     });
-    environnements.push({
+    const environnement = {
       name: networkName,
       containers: containers_ForNetwork,
       applications
-    });
+    };
+    if(networkName !== 'bridge') {
+      environnements.push(environnement);
+    } else {
+      environnement_Bridge = environnement;
+    }
+  }
+  if(environnement_Bridge) {
+    environnements.push(environnement_Bridge);
   }
 
   return environnements;
