@@ -2,23 +2,40 @@
   <div>
     <h5>Containers</h5>
     <div class="card">
-      <div class="row row-head">
-        <div class="col-xs-3 cell">Name</div>
-        <div class="col-xs-2 cell">Id</div>
-        <div class="col-xs-2 cell">Image</div>
-        <div class="col-xs-2 cell">State</div>
-        <div class="col-xs-3 cell">Actions</div>
+      <div class="row row-head hidden-xs">
+        <div class="col-sm-3 cell">Name</div>
+        <div class="col-sm-2 cell">Id</div>
+        <div class="col-sm-2 cell">Image</div>
+        <div class="col-sm-2 cell">State</div>
+        <div class="col-sm-3 cell">Actions</div>
       </div>
       <div class="row row-body"
         v-for="container in containers"
         v-bind:key="container.Id">
-        <div class="col-xs-3 cell cell-head"><span>{{container.name}}</span></div>
-        <div class="col-xs-2 cell">{{container.Id | truncate(13,'')}}</div>
-        <div class="col-xs-2 cell">{{container.Image | truncate(25,'')}}</div>
-        <div class="col-xs-2 cell">
+        
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg cell cell-sep">Container</div>
+
+        <!-- Container name -->
+        <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Container Name</div>
+        <div class="col-xs-7 col-sm-3 cell cell-head"><span>{{container.name}}</span></div>
+
+        <!-- Container name -->
+        <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Container Id</div>
+        <div class="col-xs-7 col-sm-2 cell">{{container.Id | truncate(13,'')}}</div>
+        
+        <!-- Container name -->
+        <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Image</div>
+        <div class="col-xs-7 col-sm-2 cell">{{container.Image | truncate(25,'')}}</div>
+        
+        <!-- State -->
+        <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">State</div>
+        <div class="col-xs-7 col-sm-2 cell">
           <container-state v-bind:state="container.State" />
         </div>
-        <div class="col-xs-3 cell">
+        
+        <!-- Actions -->
+        <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Container Name</div>
+        <div class="col-xs-7 col-sm-3 cell">
           <a href="#" class="btn btn-start"
             v-on:click="start(container.Id)"
             v-if="container.State !== 'running'">

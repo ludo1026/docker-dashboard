@@ -24,47 +24,72 @@
         <div class="col-xs-12">
           <br/>
           <b>Services</b>
-          <div class="row row-head">
-            <div class="col-xs-3 cell">Service</div>
-            <div class="col-xs-3 cell">Container name</div>
-            <div class="col-xs-2 cell">Container Id</div>
-            <div class="col-xs-2 cell">Image</div>
-            <div class="col-xs-2 cell">State</div>
+          <div class="row row-head hidden-xs">
+            <div class="col-sm-3 cell">Service</div>
+            <div class="col-sm-3 cell">Container name</div>
+            <div class="col-sm-2 cell">Container Id</div>
+            <div class="col-sm-2 cell">Image</div>
+            <div class="col-sm-2 cell">State</div>
           </div>
           <div
             v-for="service in compose.services"
             v-bind:key="service.name">
             <div class="row row-body"
               v-if="service.containers.length == 0">
-              <div class="col-xs-3 cell cell-head">{{service.name}}</div>
+
+              <div class="col-xs-12 hidden-sm hidden-md hidden-lg cell cell-sep">Service</div>
+
+              <!-- Service name -->
+              <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Service</div>
+              <div class="col-xs-7 col-sm-3 cell cell-head">{{service.name}}</div>
             </div>
             <div class="row row-body"
               v-if="service.containers.length > 0"
               v-for="container in service.containers"
               v-bind:key="container.name">
-            <div class="col-xs-3 cell cell-head">{{service.name}}</div>
-            <div class="col-xs-3 cell cell-head"><span v-for="name in container.Names" v-bind:key="name">{{name}}</span></div>
-            <div class="col-xs-2 cell">{{container.Id | truncate(13,'')}}</div>
-            <div class="col-xs-2 cell">{{container.Image}}</div>
-            <div class="col-xs-2 cell">
-              <container-state v-bind:state="container.State" />
-            </div>
-            <div class="col-xs-12">
-              <div class="row row-head">
-                <div class="col-xs-6"></div>
-                <div class="col-xs-3 cell">Ports</div>
+
+              <div class="col-xs-12 hidden-sm hidden-md hidden-lg cell cell-sep">Service</div>
+
+              <!-- Service name -->
+              <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Service</div>
+              <div class="col-xs-7 col-sm-3 cell cell-head">{{service.name}}</div>
+
+              <!-- Container name -->
+              <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Container name</div>
+              <div class="col-xs-7 col-sm-3 cell cell-head"><span v-for="name in container.Names" v-bind:key="name">{{name}}</span></div>
+
+              <!-- Container Id -->
+              <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Container Id</div>
+              <div class="col-xs-7 col-sm-2 cell">{{container.Id | truncate(13,'')}}</div>
+              
+              <!-- Image -->
+              <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Image</div>
+              <div class="col-xs-7 col-sm-2 cell">{{container.Image}}</div>
+              
+              <!-- State -->
+              <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">State</div>
+              <div class="col-xs-7 col-sm-2 cell">
+                <container-state v-bind:state="container.State" />
               </div>
-              <div class="row row-body">
-                <div class="col-xs-6"></div>
-                <div class="col-xs-3 cell">
-                  <span
-                    v-for="port in container.Ports"
-                    v-bind:key="port.PrivatePort">
-                    ({{port.Type}}) {{port.PrivatePort}} -> {{port.PublicPort}}
-                    <br/>
-                  </span>
+
+              <div class="col-xs-12 col-sm-12">
+                <div class="row row-head hidden-xs">
+                  <div class="col-sm-6"></div>
+                  <div class="col-sm-3 cell">Ports</div>
                 </div>
-              </div>
+                <div class="row row-body">
+                  <div class="hidden-xs col-sm-6"></div>
+                  <div class="col-xs-5 hidden-sm hidden-md hidden-lg cell">Ports</div>
+                  <div class="col-xs-7 col-sm-3 cell">
+                    <span
+                      v-for="port in container.Ports"
+                      v-bind:key="port.PrivatePort">
+                      ({{port.Type}}) {{port.PrivatePort}} -> {{port.PublicPort}}
+                      <br/>
+                    </span>
+                  </div>
+                </div>
+              </div>  
             </div>
           </div>
         </div>

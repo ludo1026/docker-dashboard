@@ -1,44 +1,45 @@
 <template>
   <div class="page row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <h1 class="logo-docker">Docker</h1>
     </div>
-    <div class="col-xs-12 col-lg-7">
+    <div class="col-sm-12 col-lg-7">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <composes v-bind:composes="composes"></composes>
         </div>
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <containers v-bind:containers="containers"></containers>
         </div>
-        <div class="col-xs-12">
+        <div class="hidden-xs col-sm-12">
           <images v-bind:images="images"></images>
         </div>
-        <div class="col-xs-12">
+        <div class="hidden-xs col-sm-12">
           <networks v-bind:networks="networks"></networks>
         </div>
-        <div class="col-xs-12">
+        <div class="hidden-xs col-sm-12">
           <volumes v-bind:volumes="volumes"></volumes>
         </div>
-        <div class="col-xs-12">
+        <div class="hidden-xs col-sm-12">
           <containers-labels v-bind:containers="containers"></containers-labels>
         </div>
-        <div class="col-xs-12">
+        <div class="hidden-xs col-sm-12">
           <containers-details v-bind:containers="containers"></containers-details>
         </div>
       </div>
     </div>    
-    <div class="col-xs-12 col-lg-5">
+    <div class="col-sm-12 col-lg-5">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <logs v-bind:logs="logs"></logs>
         </div>
         <!--
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <events v-bind:events="events"></events>
         </div>
         -->
       </div>
+    </div>
   </div>
 </template>
 

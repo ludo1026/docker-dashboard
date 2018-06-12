@@ -35,7 +35,7 @@
               v-bind:class="{ 
                 displayed: tab === index
               }">
-              <div class="col-xs-3"
+              <div class="col-xs-12 col-sm-4 col-md-3"
                 v-for="application in environnement.applications"
                 v-bind:key="application.name">
                 <div class="flat-card">
@@ -54,13 +54,20 @@
                     v-for="container in application.containers"
                     v-bind:key="container.Id"
                     v-if="container.State === 'running' && container.url">
-                    <ul>
-                      <li>
-                        <a v-bind:href="container.url.href" target="_blank">
-                          {{container.url.text}}
-                        </a>
-                      </li>
-                    </ul>
+                    <div class="row">
+                      <div class="col-xs-2 col-icon icon-link">
+                        <span class="fa fa-external-link-alt"></span>
+                      </div>
+                      <div class="col-xs-10">
+                        <ul class="links">
+                          <li>
+                            <a v-bind:href="container.url.href" target="_blank">
+                              {{container.url.text}}
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                   <div class="flat-card-bottom"
                     v-for="container in application.containers"
@@ -69,16 +76,24 @@
                       'running-container': container.State === 'running',
                       'exited-container': container.State === 'exited'
                     }">
-                    <span>
-                      <span class="fa icon-font"
-                        v-bind:class="{
-                          'fa-times exited-font': container.State === 'exited',
-                          'fa-check running-font': container.State === 'running'
-                        }"></span>
-                      <span class="cell-head">
-                        {{container.name}}
-                      </span>
-                    </span>
+                    <div class="row">
+                      <div class="col-xs-2 col-icon">
+                        <span class="fa icon-font"
+                          v-bind:class="{
+                            'fa-times exited-font': container.State === 'exited',
+                            'fa-check running-font': container.State === 'running'
+                          }"></span>
+                      </div>
+                      <div class="col-xs-10">
+                        <span class="cell-head">
+                          {{container.name}}
+                        </span>
+                        <br/>
+                        <span class="cell">
+                          {{container.Image | truncate(25,'')}}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -126,7 +141,7 @@ module.exports = {
   background-size: 50px;
   height: 50px;
   line-height: 50px;
-  font-size: 30px;
+  font-size: 29px;
   padding-top: 20px;
   letter-spacing: 1px;
   font-weight: 700;
@@ -134,7 +149,7 @@ module.exports = {
   padding-bottom: 0;
 }
 .environnements-page h1 .fa {
-  font-size: 30px;
+  font-size: 29px;
 }
 
 .environnements-page h2 {
@@ -242,10 +257,6 @@ module.exports = {
   font-size: 18px;
 }
 
-.flat-card li {
-  margin-left: 20px;
-}
-
 .flat-card a {
   font-size: 16px;
 }
@@ -284,6 +295,20 @@ module.exports = {
   border-radius: 2px;
   padding: 2px 8px;
   font-size: 16px;
+}
+
+.col-icon {
+  text-align: center;
+  vertical-align: middle;
+}
+.icon-link .fa {
+  margin-top: 4px;
+  color: #666666;
+  font-size: 16px;
+}
+
+ul.links {
+  list-style: none;
 }
 
 </style>

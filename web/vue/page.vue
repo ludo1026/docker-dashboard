@@ -38,6 +38,7 @@ module.exports = {
   data() { 
     return {
       page: 'environnements',
+      //page: 'docker',
       errors: [],
       images: [],
       containers: [],
