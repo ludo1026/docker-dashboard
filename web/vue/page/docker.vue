@@ -33,11 +33,6 @@
         <div class="col-sm-12">
           <logs v-bind:logs="logs"></logs>
         </div>
-        <!--
-        <div class="col-sm-12">
-          <events v-bind:events="events"></events>
-        </div>
-        -->
       </div>
     </div>
   </div>

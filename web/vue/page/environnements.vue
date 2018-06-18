@@ -242,7 +242,8 @@ module.exports = {
 
 .flat-card .flat-card-title {
   border: 1px solid #bbc4d1;
-  padding: 10px;
+  padding: 10px 20px;
+  text-transform: capitalize;
 }
 
 .flat-card .flat-card-title h5 {

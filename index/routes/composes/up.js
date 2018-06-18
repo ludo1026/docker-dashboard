@@ -1,7 +1,7 @@
 module.exports = __ => {
-  const {dockerCompose, app, emit} = __;
-  emit('log', 'docker-compose up');
+  const {dockerCompose, app} = __;
   app.get('/composes/:composeId/up', function(req, res) {
+    emit('log', 'docker-compose up');
     dockerCompose.up((data) => {
       emit('log', data);
     }, (err) => {
